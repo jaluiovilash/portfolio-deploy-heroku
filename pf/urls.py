@@ -5,5 +5,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('portfolio.urls')),
     path('auth/',include('authapp.urls')),
-    # path('blog/',include('blog.urls')),
 ]

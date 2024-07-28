@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 import os
 
 
@@ -132,6 +133,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/accounts/login'
-LOGIN_REDIRECT_URL = '/chirp'
-LOGOUT_REDIRECT_URL = '/chirp'
+MESSAGE_TAGS={
+    messages.ERROR:'danger',
+}
+
+# LOGIN_URL = '/accounts/login'
+# LOGIN_REDIRECT_URL = '/chirp'
+# LOGOUT_REDIRECT_URL = '/chirp'
