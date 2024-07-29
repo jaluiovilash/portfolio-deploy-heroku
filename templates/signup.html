@@ -21,6 +21,9 @@ Signup
                 <form action="/auth/signup/" method="post">
                     {% csrf_token %}
                     <div class="form-group">
+                        <label for="exampleInputEmail" class="form-label">Username</label>
+                        <input type="text" class="form-control mb-3" id="exampleInputEmail1" name="username" required>
+
                         <label for="exampleInputEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control mb-3" id="exampleInputEmail1" name="email"
                             aria-describedby="emailHelp" required>

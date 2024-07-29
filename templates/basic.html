@@ -29,6 +29,8 @@
     <link href="{% static 'assets/vendor/aos/aos.css' %}" rel=" stylesheet">
     <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel=" stylesheet">
     <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel=" stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
 
     <!-- Main CSS File -->
     <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
@@ -37,6 +39,9 @@
 
     {% endblock stylecss %}
 
+    <!-- loading the map -->
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://www.google.com/maps">
 
 </head>
 
@@ -50,61 +55,44 @@
             <img src="{% static 'assets/img/my-profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
         </div>
 
-        <a href="home.html" class="logo d-flex align-items-center justify-content-center">
-            <!-- Uncomment the line below if you also wish to use an image logo (Bootstrape logo) -->
-            <!-- <img src="{% static 'assets/img/logo.png' %}" alt=""> -->
-            <h1 class="sitename">Hello! {{user.username}}</h1>
-        </a>
+        <a href="/" class="logo d-flex align-items-center justify-content-center">
+            {% if request.user.is_authenticated %}
+            <h1 class="sitename">Hello! {{ user.username}}</h1>
 
+            {% else %}
+            <h4 class="mx-auto my-auto text-align-center text-white">Hello World!</h4>
+
+            {%endif%}
+        </a>
         <div class="social-links text-center">
             <a href="https://www.linkedin.com/in/jaluiovilash/" target="_blank" class="linkedin"><i
                     class="bi bi-linkedin"></i></a>
-            <a href="https://github.com/jaluiovilash" target="_blank" class="google-plus"><i
+            <a href="https://github.com/jaluiovilash/" target="_blank" class="google-plus"><i
                     class="bi bi-github"></i></a>
-            <a href="https://x.com/jaluiovilash" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://x.com/jaluiovilash/" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
             <a href="https://www.instagram.com/jaluiovilash/" target="_blank" class="instagram"><i
                     class="bi bi-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61558093987992" target="_blank" class="facebook"><i
+            <a href="https://www.facebook.com/jaluiovilash/" target="_blank" class="facebook"><i
                     class="bi bi-facebook"></i></a>
         </div>
 
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+                <li><a href="/"><i class="bi bi-house navicon"></i>Home</a></li>
                 <li><a href="/about"><i class="bi bi-info-circle navicon"></i> About Me</a></li>
                 <li><a href="/resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
                 <li><a href="/portfolio"><i class="bi bi-briefcase navicon"></i> Portfolio</a></li>
                 <li><a href="/services"><i class="bi bi-tools navicon"></i> Services</a></li>
-
-                <!-- <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                        <li><a href="#">Dropdown 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                                    class="bi bi-chevron-down toggle-dropdown"></i></a>
-                            <ul>
-                                <li><a href="#">Deep Dropdown 1</a></li>
-                                <li><a href="#">Deep Dropdown 2</a></li>
-                                <li><a href="#">Deep Dropdown 3</a></li>
-                                <li><a href="#">Deep Dropdown 4</a></li>
-                                <li><a href="#">Deep Dropdown 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Dropdown 2</a></li>
-                        <li><a href="#">Dropdown 3</a></li>
-                        <li><a href="#">Dropdown 4</a></li>
-                    </ul>
-                </li> -->
-
+                <li><a href="/blog"><i class="bi bi-pencil-square navicon"></i> Blog</a></li>
                 <li><a href="/contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
 
                 {% if not request.user.is_authenticated %}
                 <li><a href="/auth/login"><i class="bi bi-person navicon"></i> Login</a></li>
-
                 <li><a href="/auth/signup"><i class="bi bi-person-plus navicon"></i> Signup</a></li>
 
                 {% else %}
-                <li><a href="/auth/logout"><i class="bi bi-person-minus navicon"></i> Logout</a></li>
+                <li><a href="/auth/logout"><i class="text-danger bi bi-box-arrow-right navicon"></i> Logout</a></li>
+
                 {% endif %}
             </ul>
 
@@ -114,10 +102,10 @@
                     <p>All rights reserved.</p>
                 </div>
 
-                <div class="credits">
+                <!-- <div class="credits">
                     <p style="text-align: center;">Designed by <span
                             style="color: rgb(209, 209, 209);">BootstrapMade</span></p>
-                </div>
+                </div> -->
             </div>
         </nav>
 

@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 
 def signup(request):
     if request.method == "POST":
+        get_username = request.POST
         get_email = request.POST.get('email')
         get_pass1 = request.POST.get('pass1')
         get_pass2 = request.POST.get('pass2')
