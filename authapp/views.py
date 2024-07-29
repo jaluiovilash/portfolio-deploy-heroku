@@ -14,19 +14,16 @@ def signup(request):
         if get_pass1 != get_pass2:
             messages.info(request, 'Passwords do not match...!')
             return redirect('/auth/signup/')
-
         try:
             if User.objects.get(username=get_email):
                 messages.warning(request, "Email already exists...!")
                 return redirect('/auth/signup/')
         except User.DoesNotExist:
             pass
-
         user = User.objects.create_user(username=username, email=get_email, password=get_pass1)
         user.save()
         messages.success(request, 'User is created. Please login...!')
         return redirect('/auth/login/')
-
     return render(request, 'signup.html')
 
 def login_view(request):
@@ -42,10 +39,9 @@ def login_view(request):
         else:
             messages.error(request, 'Invalid credentials...!')
             return redirect('/auth/login/')
-
     return render(request, 'login.html')
 
 def logout_view(request):
     auth_logout(request)
     messages.success(request,"Logout successfully...!")
-    return redirect('/auth/login/')
+    return redirect('/')

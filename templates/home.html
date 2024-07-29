@@ -3,16 +3,33 @@
 
 {% block title %} jaluiovilash {% endblock title %}
 
+{% block stylecss %}
+<style>
+    .left-centered {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .left-centered>div {
+        margin-left: 10%;
+        text-align: left;
+    }
+</style>
+{% endblock stylecss %}
 
 {% block hero %}
 <section id="hero" class="hero section dark-background">
-    <img src="{% static 'assets/img/hero-bg.jpg' %}" alt="" data-aos=" fade-in" class="">
+    <img src="{% static 'assets/img/hero-bg.jpg' %}" alt="" data-aos="fade-in" class="">
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Ovilash Jalui</h2>
-        <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span
-                class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
-                class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+    <div class="container left-centered" data-aos="fade-up" data-aos-delay="100">
+        <div>
+            <h2>Ovilash Jalui</h2>
+            <p>I'm <span class="typed"
+                    data-typed-items="UI/UX Designer, Product Designer, Full-Stack Developer, Freelancer">Designer</span><span
+                    class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
+                    class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+        </div>
     </div>
 </section>
 
@@ -24,8 +41,22 @@
 {% for message in messages %}
 <div class="alert alert-{{messages.tags}} alert-dismissible fade show" role="alert">
     <strong>{{message}}</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <button type=" button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %}
 
 {% endblock body %}
+
+
+
+{% block scripts %}
+<script>
+    setTimeout(function () {
+        let alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function (alert) {
+            let bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 3000);
+</script>
+{% endblock scripts %}

@@ -12,6 +12,9 @@ def about(request):
 def resume(request):
     return render(request,'resume.html')
 
+def projectPortfolio(request):
+    return render(request,'projectPortfolio.html')
+
 def services(request):
     return render(request,'services.html')
 
@@ -36,3 +39,6 @@ def blog(request):
     posts=Blogs.objects.all().order_by('-timeStamp')
     context={"posts":posts}
     return render(request,'blog.html',context)
+
+
+

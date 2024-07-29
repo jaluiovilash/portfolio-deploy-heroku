@@ -90,3 +90,16 @@ Contact Us
     </div>
 </section>
 {% endblock body %}
+
+
+{% block scripts %}
+<script>
+    setTimeout(function () {
+        let alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function (alert) {
+            let bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 3000);
+</script>
+{% endblock scripts %}
