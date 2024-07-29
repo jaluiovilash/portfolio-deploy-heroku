@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from portfolio.models import Contact
+from portfolio.models import Contact, Blogs
 
 def home(request):
     return render(request,'home.html')
@@ -30,4 +30,6 @@ def contact(request):
 
 
 def blog(request):
-    return render(request,'blog.html')
+    posts=Blogs.objects.all().order_by('-timeStamp')
+    context={"posts":posts}
+    return render(request,'blog.html',context)
