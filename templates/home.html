@@ -1,58 +1,71 @@
 {% extends 'basic.html' %}
 {% load static %}
 
-{% block title %} jaluiovilash {% endblock title %}
+{% block title %}
+jaluiovilash
+{%endblock title %}
 
 {% block stylecss %}
 <style>
-    .left-centered {
+    .hero {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
+        height: 100vh;
+        text-align: center;
     }
 
-    .left-centered>div {
-        margin-left: 10%;
-        text-align: left;
+    .hero .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero h2 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #fff;
+    }
+
+    .hero p {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #fff;
     }
 </style>
-{% endblock stylecss %}
-
-{% block hero %}
+{% endblock stylecss %} {% block hero %}
 <section id="hero" class="hero section dark-background">
-    <img src="{% static 'assets/img/hero-bg.jpg' %}" alt="" data-aos="fade-in" class="">
+    <img src="{% static 'assets/img/hero.jpg' %}" alt="" data-aos="fade-in" class="" />
 
-    <div class="container left-centered" data-aos="fade-up" data-aos-delay="100">
+    <div class="container centered" data-aos="fade-up" data-aos-delay="100">
         <div>
-            <h2>Ovilash Jalui</h2>
-            <p>I'm <span class="typed"
+            <h2>Hey, I'm Ovilash Jalui</h2>
+            <p>
+                I'm
+                <span class="typed"
                     data-typed-items="UI/UX Designer, Product Designer, Full-Stack Developer, Freelancer">Designer</span><span
-                    class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
-                    class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+                    class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+            </p>
+        </div>
+        <div class="descp">
+            <p>
+                I've been working as a Full Stack Developer from last one year.
+                <br>
+                I am based in India.
+            </p>
         </div>
     </div>
 </section>
-
-{% endblock hero %}
-
-
-{% block body %}
-
-{% for message in messages %}
+{% endblock hero %} {% block body %} {% for message in messages %}
 <div class="alert alert-{{messages.tags}} alert-dismissible fade show" role="alert">
     <strong>{{message}}</strong>
     <button type=" button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-{% endfor %}
-
-{% endblock body %}
-
-
-
-{% block scripts %}
+{% endfor %} {% endblock body %} {% block scripts %}
 <script>
     setTimeout(function () {
-        let alerts = document.querySelectorAll('.alert');
+        let alerts = document.querySelectorAll(".alert");
         alerts.forEach(function (alert) {
             let bsAlert = new bootstrap.Alert(alert);
             bsAlert.close();

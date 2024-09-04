@@ -138,7 +138,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS={
     messages.ERROR:'danger',
 }
-
-# LOGIN_URL = '/accounts/login'
-# LOGIN_REDIRECT_URL = '/chirp'
-# LOGOUT_REDIRECT_URL = '/chirp'
